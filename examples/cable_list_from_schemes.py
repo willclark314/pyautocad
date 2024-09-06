@@ -34,11 +34,11 @@ def get_known_targets(filename):
 
 
 def get_cables(acad, block, known_targets):
-    patterns = [ur"""(?P<cable>.*?)-(?P<section>[\dxх,\(\)]+)\s+
+    patterns = [r"""(?P<cable>.*?)-(?P<section>[\dxх,\(\)]+)\s+
                      (?P<length>\d+)\s*[мm]\\P
                      \s*(?P<name>[^-]+)-(?P<source>.+)\s*""",
 
-                ur"""(?P<name>.*?)-(?P<source>.*?)\s*\\P
+                r"""(?P<name>.*?)-(?P<source>.*?)\s*\\P
                       \s*(?P<cable>.*?)-(?P<section>[\dxх,\(\)]+)\s+
                       (?P<length>\d+)\s*[мm]"""]
     patterns = [re.compile(pat, re.VERBOSE) for pat in patterns]
