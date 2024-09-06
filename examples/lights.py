@@ -18,10 +18,10 @@ def iter_lamps(acad, objects):
         except Exception:
             continue
         text = utils.unformat_mtext(text)
-        m = re.search(ur'(?P<num>\d+)(?P<mark>.*?)\\S(?P<num_power>.*?)/.*?;', text)
+        m = re.search(r'(?P<num>\d+)(?P<mark>.*?)\\S(?P<num_power>.*?)/.*?;', text)
         if not m:
             continue
-        print m.group('num'), m.group('mark'), m.group('num_power')
+        print(m.group('num'), m.group('mark'), m.group('num_power'))
         yield LampEntry(m.group('num'), m.group('mark'), m.group('num_power'))
 
 def main():
@@ -32,9 +32,11 @@ def main():
     lamps = defaultdict(int)
     for lamp in iter_lamps(acad, objects):
         lamps[lamp.mark] += int(lamp.number)
-    print '-' * 79
-    for mark, number in sorted(lamps.iteritems()):
-        print '%-20s | %s' % (mark, number)
+    print('-' * 79)
+    # As you are in python3 , use dict.items() instead of dict.iteritems()
+    # for mark, number in sorted(lamps.iteritems()):
+    for mark, number in sorted(lamps.items()):
+        print('%-20s | %s' % (mark, number))
 
 if __name__ == "__main__":
     with utils.timing():
