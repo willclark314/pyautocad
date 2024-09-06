@@ -4,7 +4,7 @@ from pyautocad import Autocad, APoint
 
 acad = Autocad(create_if_not_exists=True)
 acad.prompt("Hello, Autocad from Python\n")
-print acad.doc.Name
+print(acad.doc.Name)
 
 p1 = APoint(0, 0)
 p2 = APoint(50, 25)
@@ -15,19 +15,19 @@ for i in range(5):
     p1.y += 10
 
 for obj in acad.iter_objects():
-    print obj.ObjectName
+    print(obj.ObjectName)
 
 for text in acad.iter_objects('Text'):
-    print text.TextString, text.InsertionPoint
+    print(text.TextString, text.InsertionPoint)
 
 for obj in acad.iter_objects(['Text', 'Line']):
-    print obj.ObjectName
+    print(obj.ObjectName)
 
 def text_contains_3(text_obj):
     return '3' in text_obj.TextString
 
 text = acad.find_one('Text', predicate=text_contains_3)
-print text.TextString
+print(text.TextString)
 
 from pyautocad import ACAD
 
