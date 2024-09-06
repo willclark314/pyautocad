@@ -2,10 +2,9 @@
 # -*- coding: utf-8 -*-
 from pyautocad import Autocad, APoint
 
-
 acad = Autocad()
 acad.prompt("Hello, Autocad from Python\n")
-print acad.doc.Name
+print(acad.doc.Name)
 
 p1 = APoint(0, 0)
 p2 = APoint(50, 25)
