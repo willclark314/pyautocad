@@ -22,14 +22,14 @@ def iter_drawings_names(acad, doc):
                 text = mt.TextString
                 yield text.replace(" \\P", " ").replace("\\P", " ")
                 break
-    print
+    print()
 
 def main():
     filename = sys.argv[1] if sys.argv[1:] else 'names.txt'
     output = codecs.open(filename, "w", encoding='utf-8')
     acad = Autocad()
     for doc in acad.app.Documents:
-        print doc.Name
+        print(doc.Name)
         output.write(u'%s\n' % ('-' * 50))
         output.write(u"    %s\n" % doc.Name)
         output.write(u'%s\n' % ('-' * 50))
