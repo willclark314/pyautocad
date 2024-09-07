@@ -72,7 +72,7 @@ def sort_by_correct_order(messed_order, correct_order):
 def sort_cables_by_targets(cables, targets):
     presorted_cables = OrderedDict()
     for entry in sorted(cables, key=lambda x: (x.source, x.name)):
-       presorted_cables[entry.name] = entry
+        presorted_cables[entry.name] = entry
     if not targets:
         return presorted_cables.itervalues()
     sorted_cable_names = sort_by_correct_order(presorted_cables, targets)
